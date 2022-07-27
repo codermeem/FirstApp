@@ -1,0 +1,7 @@
+{
+  "files.autoSave": "afterDelay",
+  "editor.fontSize": 19,
+  "editor.tabSize": 2,
+  "editor.wordWrap": "on",
+  "diffEditor.ignoreTrimWhitespace": true
+}
