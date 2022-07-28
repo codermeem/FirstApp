@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:first_exam/pages/product_grid.dart';
-import 'package:first_exam/widget/widget.dart';
 import 'package:flutter/material.dart';
+import '../main.dart';
+import '../widget/widget.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -116,13 +116,12 @@ class _SignUpState extends State<SignUp> {
                         password: _passwordController.text.trim(),
                       );
                       var user = credential.user;
-                      if (user == null) {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (BuildContext context) =>
-                                  ProductGridPage()),
-                        );
+                      if (user != null) {
+                        Navigator.pushAndRemoveUntil(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => VerifyEmailView()),
+                            (Route) => false);
                       }
                     } on FirebaseAuthException catch (e) {
                       if (e.code == 'weak-password') {
