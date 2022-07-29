@@ -49,6 +49,8 @@ class _SignInState extends State<SignIn> {
                 ),
                 validator: (val) => val!.isEmpty ? "empty fill" : null,
               ),
+
+              //password
               Padding(
                 padding: const EdgeInsets.only(bottom: 10.0, top: 10),
                 //password
@@ -64,6 +66,7 @@ class _SignInState extends State<SignIn> {
                   validator: (val) => val!.isEmpty ? "empty fill" : null,
                 ),
               ),
+
               //sign in btn
               ElevatedButton(
                 onPressed: () async {
@@ -97,7 +100,8 @@ class _SignInState extends State<SignIn> {
 
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text("Wrong password provided for that user."),
+                            content:
+                                Text("Wrong password provided for that user."),
                           ),
                         );
                       }
@@ -108,8 +112,21 @@ class _SignInState extends State<SignIn> {
                 },
                 style: ButtonStyle(
                     backgroundColor:
-                        MaterialStateProperty.all(Colors.lightBlue.shade300)),
+                        MaterialStateProperty.all(Colors.lightBlue.shade500)),
                 child: const Text("Sign-in"),
+              ),
+
+              const SizedBox(
+                height: 30.0,
+              ),
+
+              //got to sign up page
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil("/sign-up/", (route) => false);
+                },
+                child: const Text("Not registered yet? Register here!"),
               ),
             ],
           ),

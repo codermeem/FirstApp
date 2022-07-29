@@ -73,21 +73,6 @@ class _SignUpState extends State<SignUp> {
                 validator: (val) => val!.isEmpty ? "Empty field" : null,
               ),
 
-              //phone
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10.0),
-                child: TextFormField(
-                  controller: _phoneController,
-                  decoration: InputDecoration(
-                    hintText: "Phone",
-                    filled: true,
-                    fillColor: Colors.grey.shade200,
-                    enabledBorder: InputBorder.none,
-                  ),
-                  validator: (val) => val!.isEmpty ? "Empty field" : null,
-                ),
-              ),
-
               //password
               Padding(
                 padding: const EdgeInsets.only(bottom: 10.0),
@@ -120,7 +105,8 @@ class _SignUpState extends State<SignUp> {
                         Navigator.pushAndRemoveUntil(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => VerifyEmailView()),
+                              builder: (context) => HomePage(),
+                            ),
                             (Route) => false);
                       }
                     } on FirebaseAuthException catch (e) {
@@ -152,11 +138,24 @@ class _SignUpState extends State<SignUp> {
                 // style
                 style: ButtonStyle(
                   backgroundColor:
-                      MaterialStateProperty.all(Colors.lightBlue.shade300),
+                      MaterialStateProperty.all(Colors.lightBlue.shade500),
                 ),
                 child: const Text(
                   "Sign-up",
                 ),
+              ),
+
+              const SizedBox(
+                height: 30.0,
+              ),
+
+              //got to sign up page
+              TextButton(
+                onPressed: () {
+                  Navigator.of(context)
+                      .pushNamedAndRemoveUntil("/sign-in/", (route) => false);
+                },
+                child: const Text("Already registered? Login here!"),
               ),
             ],
           ),
